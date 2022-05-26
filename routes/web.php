@@ -23,8 +23,8 @@ Route::get('/users', function () {
     return $users;
 });
 
-Route::get('php', function () {
-    echo phpinfo();
+Route::get('c', function () {
+    return config('database.connections.mysql');
 });
 
 Route::get('/dashboard', function () {
