@@ -44,7 +44,7 @@ Route::get('try', function () {
     echo $dsn;
 
 // Connect to the database.
-    $conn = new PDO($dsn, $username, $password, $conn_config);
+    $conn = new PDO($dsn, $username, $password, []);
 
 });
 
