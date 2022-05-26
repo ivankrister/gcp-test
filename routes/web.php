@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use PDO;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,27 @@ Route::get('/users', function () {
 
 Route::get('c', function () {
     return config('database.connections.mysql');
+});
+Route::get('try', function () {
+
+    $username = env('DB_USERNAME', 'forge');
+    $password = env('DB_PASSWORD', '');
+    $dbName = env('DB_DATABASE', 'forge');
+    $connectionName = env('DB_SOCKET', '');
+    $socketDir = getenv('DB_SOCKET_DIR') ?: '/cloudsql';
+
+    $dsn = sprintf(
+        'mysql:dbname=%s;unix_socket=%s/%s',
+        $dbName,
+        $socketDir,
+        $connectionName
+    );
+
+    echo $dsn;
+
+// Connect to the database.
+    $conn = new PDO($dsn, $username, $password, $conn_config);
+
 });
 
 Route::get('/dashboard', function () {
