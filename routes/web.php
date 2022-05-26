@@ -23,6 +23,10 @@ Route::get('/users', function () {
     return $users;
 });
 
+Route::get('php', function () {
+    echo phpinfo();
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
